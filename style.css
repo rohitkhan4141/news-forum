@@ -1,3 +1,12 @@
+body {
+  background-color: #f6f6f6;
+}
+
+.container {
+  padding: 0;
+}
+
+/* navbar css */
 .brand-name {
   background-color: #5d5fef;
   padding: 5px 8px;
@@ -13,4 +22,46 @@
 
 .nav-item .nav-link:hover {
   color: #5d5fef;
+}
+
+/* categories css */
+
+#categorie-lists {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0;
+}
+
+#categorie-lists li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.753);
+  font-size: 18px;
+  text-align: center;
+}
+
+#categorie-lists li {
+  border-bottom: 1px solid #5d5fefb4;
+  padding: 5px;
+  margin: 2px;
+}
+
+#categorie-lists li a:hover {
+  color: #5d5fef;
+}
+
+@media screen and (max-width: 992px) {
+  #categorie-lists {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 10px;
+  }
+  #categorie-lists li {
+    background-color: rgba(233, 233, 233, 0.274);
+    margin: 5px;
+    padding: 8px 5px;
+    text-align: center;
+    border-radius: 5px;
+  }
 }
