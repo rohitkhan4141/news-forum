@@ -1,0 +1,16 @@
+.brand-name {
+  background-color: #5d5fef;
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: white;
+  font: bold;
+}
+
+.nav-item .active {
+  color: #5d5fef !important;
+  font-size: bold;
+}
+
+.nav-item .nav-link:hover {
+  color: #5d5fef;
+}
