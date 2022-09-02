@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fashion News</title>
+    <!-- font awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- bootstrap cdn link -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
@@ -17,6 +25,7 @@
   </head>
   <body>
     <div class="container">
+      <!-- navbar -->
       <section>
         <nav class="navbar navbar-expand-lg mt-3 pb-4 border-bottom">
           <div class="container-fluid">
@@ -37,12 +46,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-2">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
                     >News</a
                   >
                 </li>
                 <li class="nav-item mx-2">
-                  <a class="nav-link" href="#">Blog</a>
+                  <a class="nav-link" href="blog.html">Blog</a>
                 </li>
                 <li class="nav-item mx-2">
                   <img src="assets/Avatar.png" alt="" />
@@ -52,8 +64,79 @@
           </div>
         </nav>
       </section>
+      <!-- categories List -->
       <div id="categories" class="mt-4">
         <ul id="categorie-lists"></ul>
+      </div>
+      <!-- main section -->
+      <main id="news-section">
+        <!-- <div class="single-news">
+          <div class="single-news-image">
+            <img src="assets/unsplash_EhTcC9sYXsw.png" alt="" />
+          </div>
+          <div class="single-news-content">
+            <h2>title</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto
+              aspernatur voluptatem consectetur deserunt voluptas modi
+              necessitatibus cupiditate architecto veniam incidunt iste, sunt,
+            </p>
+            <div class="author-container">
+              <div class="author">
+                <div class="author-img">
+                  <img src="assets/Avatar.png" alt="" />
+                </div>
+                <div class="ms-2">
+                  <h6>John Cupper</h6>
+                  <span>10/12/1994</span>
+                </div>
+              </div>
+              <div>
+                <span><i class="fa-regular fa-eye"></i></span> view
+              </div>
+              <span><img src="assets/Group 116134.png" alt="" /></span>
+              <div>
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </main>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- bootstrap cdn link -->
