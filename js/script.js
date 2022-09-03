@@ -35,7 +35,7 @@ const loadNews = async (category_id) => {
   const newsSection = document.getElementById("news-section");
   newsSection.textContent = "";
   for (const news of newses) {
-    console.log(news);
+    // console.log(news);
     const singleNewsdiv = document.createElement("div");
     singleNewsdiv.classList.add("single-news");
     const newsDetails = add3Dots(news.details, 300);
@@ -53,24 +53,76 @@ const loadNews = async (category_id) => {
                 </div>
                 <div class="ms-2">
                   <h6>${
-                    news.author.name ? news.author.name : "No author name"
+                    news.author.name ? news.author.name : "No author name Found"
                   }</h6>
                   <span>10/12/1994</span>
                 </div>
               </div>
               <div>
-                <span><i class="fa-regular fa-eye"></i></span> view
+                <span><i class="fa-regular fa-eye"></i> ${
+                  news.total_view ? news.total_view : "No Total Views Found"
+                }</span>
               </div>
               <span><img src="assets/Group 116134.png" alt="" /></span>
               <div>
-                <i  class="fa-solid fa-arrow-right" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"></i>
+                <i onclick = "showNewsDetails('${
+                  news._id
+                }')" class="fa-solid fa-arrow-right" data-bs-toggle="modal"
+                data-bs-target="#newsModal"></i>
               </div>
             </div>
         </div>   
     `;
     newsSection.append(singleNewsdiv);
   }
+};
+
+const showNewsDetails = async (news_id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  const newsDetailsObj = await fetchData(url);
+  const newsDetails = newsDetailsObj.data[0];
+  const newstitle = document.getElementById("newsModalLabel");
+  newstitle.innerText = newsDetails.title;
+  const newsDesCription = add3Dots(newsDetails.details, 80);
+  const modalBodyId = document.getElementById("modal-body-id");
+  modalBodyId.innerHTML = `
+    <img src ='${
+      newsDetails.thumbnail_url ? newsDetails.thumbnail_url : "No source"
+    }'><br/><br/>
+    <span class="text-primary">Description : <p class="text-black">${newsDesCription}<p></span>
+
+    <span class="text-primary">Total Views : <span class="text-black">${
+      newsDetails.total_view
+        ? newsDetails.total_view
+        : "No Total total View Found"
+    }<span></span><br/>
+      
+      <span class="text-primary">Ratings : <span class="text-black">${
+        newsDetails.rating.number
+          ? newsDetails.rating.number
+          : "No Rating Found"
+      }<span></span><br/>
+
+    <span class="text-primary">Author Name : <span class="text-black">${
+      newsDetails.author.name
+        ? newsDetails.author.name
+        : "Author Name Not Found"
+    }<span></span><br/>
+
+    <span class="text-primary">Published Date : <span class="text-black">${
+      newsDetails.author.published_date
+        ? newsDetails.author.published_date
+        : "No Pulished Day Found"
+    }<span></span><br/>
+
+    <span class=" modal-author-img text-primary">Author Image : <img src ='${
+      newsDetails.author.img ? newsDetails.author.img : "No source"
+    }'class="text-black">
+    </span><br/>
+
+    
+  
+  `;
 };
 
 const add3Dots = (string, limit) => {
