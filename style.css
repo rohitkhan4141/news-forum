@@ -15,7 +15,12 @@ body {
   font: bold;
 }
 
-.nav-item .active {
+.active {
+  color: #5d5fef !important;
+  font-size: bold;
+}
+
+.active a {
   color: #5d5fef !important;
   font-size: bold;
 }

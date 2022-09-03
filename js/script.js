@@ -20,7 +20,7 @@ const displayCategories = async () => {
     // console.log(categorie);
     const listItem = document.createElement("li");
     listItem.innerHTML = `
-    <a onclick = "loadNews('${categorie.category_id}')" href="#">${categorie.category_name}</a>
+    <a class="categories-link" onclick = "loadNews('${categorie.category_id}')" href="#">${categorie.category_name}</a>
     `;
     categorieLists.append(listItem);
   }
@@ -34,9 +34,23 @@ const loadNews = async (category_id) => {
   const newsObj = await fetchData(url);
   const newses = newsObj.data;
   const newsSection = document.getElementById("news-section");
+  const newsCount = document.getElementById("news-count");
   newsSection.textContent = "";
+  if (newses.length > 1) {
+    newsCount.classList.remove("d-none");
+    newsCount.innerHTML = `
+        <h4>${newses.length} News Found</h4>
+    `;
+  } else {
+    newsCount.classList.remove("d-none");
+    newsCount.innerHTML = `
+        <h4>No News Found</h4>
+    `;
+  }
+  // sorting news by decending order
+  newses.sort((a, b) => b.total_view - a.total_view);
+
   for (const news of newses) {
-    // console.log(news);
     const singleNewsdiv = document.createElement("div");
     singleNewsdiv.classList.add("single-news");
     const newsDetails = add3Dots(news.details, 300);
