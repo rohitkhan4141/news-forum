@@ -49,14 +49,13 @@ const displayCategories = async () => {
   const fetchObj = await fetchData(url);
   const categories = fetchObj.data.news_category;
   const categorieLists = document.getElementById("categorie-lists");
-  for (const categorie of categories) {
-    console.log(categorie);
+  categories.forEach((categorie) => {
     const listItem = document.createElement("li");
     listItem.innerHTML = `
     <a id='${categorie.category_id}' onclick = "loadNews('${categorie.category_id}')" href="#">${categorie.category_name}</a>
     `;
     categorieLists.append(listItem);
-  }
+  });
 };
 
 /** load news by categories and display it to the dom...*/
@@ -88,11 +87,10 @@ const loadNews = async (category_id) => {
   /** sorting news by decending order*/
   newses.sort((a, b) => b.total_view - a.total_view);
 
-  for (const news of newses) {
+  newses.forEach((news) => {
     const singleNewsdiv = document.createElement("div");
     singleNewsdiv.classList.add("single-news");
     const newsDetails = add3Dots(news.details, 300);
-    console.log(news);
     singleNewsdiv.innerHTML = `
         <div class="single-news-image">
             <img src="${news.thumbnail_url}" alt="" />
@@ -125,10 +123,10 @@ const loadNews = async (category_id) => {
                 data-bs-target="#newsModal"></i>
               </div>
             </div>
-        </div>   
+        </div>
     `;
     newsSection.append(singleNewsdiv);
-  }
+  });
   loading(false);
 };
 

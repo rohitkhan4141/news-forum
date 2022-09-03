@@ -109,6 +109,7 @@ body {
 }
 .fa-solid {
   cursor: pointer;
+  color: #121472;
 }
 
 /* modal */
