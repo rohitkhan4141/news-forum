@@ -6,6 +6,13 @@ body {
   padding: 0;
 }
 
+.activeElem {
+  color: #5d5fef !important;
+}
+.desactiveElem {
+  background-color: none;
+}
+
 /* navbar css */
 .brand-name {
   background-color: #5d5fef;
@@ -13,6 +20,10 @@ body {
   border-radius: 5px;
   color: white;
   font: bold;
+}
+
+.categories-link a {
+  color: rebeccapurple !important;
 }
 
 .active {

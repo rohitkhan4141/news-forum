@@ -1,3 +1,32 @@
+/** helper functions */
+
+let activeElemId;
+const activateItem = (elemId) => {
+  document.getElementById(elemId).className = "activeElem";
+  if (null != activeElemId) {
+    document.getElementById(activeElemId).className = "desactiveElem";
+  }
+  activeElemId = elemId;
+};
+
+const loading = (isLoading) => {
+  const loader = document.getElementById("loader");
+  if (isLoading === true) {
+    loader.classList.remove("d-none");
+  } else {
+    loader.classList.add("d-none");
+  }
+};
+
+const add3Dots = (string, limit) => {
+  var dots = "...";
+  if (string.length > limit) {
+    // you can also use substr instead of substring
+    string = string.substring(0, limit) + dots;
+  }
+  return string;
+};
+
 // fetch function
 const fetchData = async (url) => {
   try {
@@ -17,20 +46,20 @@ const displayCategories = async () => {
   const categories = fetchObj.data.news_category;
   const categorieLists = document.getElementById("categorie-lists");
   for (const categorie of categories) {
-    // console.log(categorie);
+    console.log(categorie);
     const listItem = document.createElement("li");
     listItem.innerHTML = `
-    <a class="categories-link" onclick = "loadNews('${categorie.category_id}')" href="#">${categorie.category_name}</a>
+    <a id='${categorie.category_id}' onclick = "loadNews('${categorie.category_id}')" href="#">${categorie.category_name}</a>
     `;
     categorieLists.append(listItem);
   }
 };
 
 // load news by categories...
-
 const loadNews = async (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
   loading(true);
+  activateItem(category_id);
   const newsObj = await fetchData(url);
   const newses = newsObj.data;
   const newsSection = document.getElementById("news-section");
@@ -142,23 +171,5 @@ const showNewsDetails = async (news_id) => {
 };
 
 // loder function
-
-const loading = (isLoading) => {
-  const loader = document.getElementById("loader");
-  if (isLoading === true) {
-    loader.classList.remove("d-none");
-  } else {
-    loader.classList.add("d-none");
-  }
-};
-
-const add3Dots = (string, limit) => {
-  var dots = "...";
-  if (string.length > limit) {
-    // you can also use substr instead of substring
-    string = string.substring(0, limit) + dots;
-  }
-  return string;
-};
 
 displayCategories();
