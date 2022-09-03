@@ -1,6 +1,7 @@
 /** helper functions */
 
 let activeElemId;
+/** Active class function */
 const activateItem = (elemId) => {
   document.getElementById(elemId).className = "activeElem";
   if (null != activeElemId) {
@@ -9,6 +10,7 @@ const activateItem = (elemId) => {
   activeElemId = elemId;
 };
 
+/** spinner handler functions */
 const loading = (isLoading) => {
   const loader = document.getElementById("loader");
   if (isLoading === true) {
@@ -17,6 +19,8 @@ const loading = (isLoading) => {
     loader.classList.add("d-none");
   }
 };
+
+/** adding dots in paragraph function*/
 
 const add3Dots = (string, limit) => {
   var dots = "...";
@@ -27,7 +31,7 @@ const add3Dots = (string, limit) => {
   return string;
 };
 
-// fetch function
+/** Fetch function for all api request */
 const fetchData = async (url) => {
   try {
     const res = await fetch(url);
@@ -38,7 +42,7 @@ const fetchData = async (url) => {
   }
 };
 
-// fetch categories and display it to the dom
+/** fetch categories and display it to the dom */
 
 const displayCategories = async () => {
   const url = "https://openapi.programming-hero.com/api/news/categories";
@@ -55,11 +59,15 @@ const displayCategories = async () => {
   }
 };
 
-// load news by categories...
+/** load news by categories and display it to the dom...*/
+
 const loadNews = async (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
+  //   star loading
   loading(true);
+  // active link color
   activateItem(category_id);
+  //   getting data
   const newsObj = await fetchData(url);
   const newses = newsObj.data;
   const newsSection = document.getElementById("news-section");
@@ -76,7 +84,8 @@ const loadNews = async (category_id) => {
         <h4>No News Found</h4>
     `;
   }
-  // sorting news by decending order
+
+  /** sorting news by decending order*/
   newses.sort((a, b) => b.total_view - a.total_view);
 
   for (const news of newses) {
@@ -122,8 +131,11 @@ const loadNews = async (category_id) => {
   loading(false);
 };
 
+/** fetch news details by news id and show it on the modal*/
+
 const showNewsDetails = async (news_id) => {
   const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  //getting data
   const newsDetailsObj = await fetchData(url);
   const newsDetails = newsDetailsObj.data[0];
   const newstitle = document.getElementById("newsModalLabel");
@@ -170,6 +182,6 @@ const showNewsDetails = async (news_id) => {
   `;
 };
 
-// loder function
+// default function call for categories
 
 displayCategories();

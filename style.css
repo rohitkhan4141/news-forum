@@ -6,6 +6,7 @@ body {
   padding: 0;
 }
 
+/* active and deactive categories link */
 .activeElem {
   color: #5d5fef !important;
 }
@@ -20,10 +21,6 @@ body {
   border-radius: 5px;
   color: white;
   font: bold;
-}
-
-.categories-link a {
-  color: rebeccapurple !important;
 }
 
 .active {
@@ -66,7 +63,7 @@ body {
   color: #5d5fef;
 }
 
-/*  */
+/* news section */
 
 .single-news {
   display: flex;
@@ -121,6 +118,8 @@ body {
   object-fit: contain;
   border-radius: 50%;
 }
+
+/* media queries */
 
 @media screen and (max-width: 776px) {
   .single-news {
