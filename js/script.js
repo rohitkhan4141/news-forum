@@ -92,9 +92,10 @@ const loadNews = async (category_id) => {
     const singleNewsdiv = document.createElement("div");
     singleNewsdiv.classList.add("single-news");
     const newsDetails = add3Dots(news.details, 300);
+    console.log(news);
     singleNewsdiv.innerHTML = `
         <div class="single-news-image">
-            <img src="${news.image_url}" alt="" />
+            <img src="${news.thumbnail_url}" alt="" />
         </div>
         <div class="single-news-content">
             <h4>${news.title ? news.title : "Title"}</h4>

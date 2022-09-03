@@ -29,7 +29,7 @@
       <section>
         <nav class="navbar navbar-expand-lg mt-3 pb-4 border-bottom">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#"
+            <a class="navbar-brand" href="index.html"
               ><span class="brand-name">News</span> Forum</a
             >
             <button
@@ -74,9 +74,16 @@
       <!-- main section -->
       <section>
         <h2 class="text-center py-4 text-primary">News Feed</h2>
+        <!-- spinner -->
+        <section id="loader" class="d-none">
+          <div class="d-flex justify-content-center align-items-center mt-5">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </section>
         <main id="news-section"></main>
       </section>
-
       <!-- Modal -->
       <div
         class="modal fade"
@@ -109,15 +116,6 @@
           </div>
         </div>
       </div>
-
-      <!-- spinner -->
-      <section id="loader" class="d-none">
-        <div class="d-flex justify-content-center align-items-center mt-5 pt-5">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
-        </div>
-      </section>
     </div>
     <!-- bootstrap cdn link -->
     <script
