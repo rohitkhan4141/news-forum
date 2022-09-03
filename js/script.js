@@ -30,6 +30,7 @@ const displayCategories = async () => {
 
 const loadNews = async (category_id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
+  loading(true);
   const newsObj = await fetchData(url);
   const newses = newsObj.data;
   const newsSection = document.getElementById("news-section");
@@ -75,6 +76,7 @@ const loadNews = async (category_id) => {
     `;
     newsSection.append(singleNewsdiv);
   }
+  loading(false);
 };
 
 const showNewsDetails = async (news_id) => {
@@ -123,6 +125,17 @@ const showNewsDetails = async (news_id) => {
     
   
   `;
+};
+
+// loder function
+
+const loading = (isLoading) => {
+  const loader = document.getElementById("loader");
+  if (isLoading === true) {
+    loader.classList.remove("d-none");
+  } else {
+    loader.classList.add("d-none");
+  }
 };
 
 const add3Dots = (string, limit) => {
