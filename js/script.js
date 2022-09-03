@@ -139,13 +139,14 @@ const showNewsDetails = async (news_id) => {
   const newsDetails = newsDetailsObj.data[0];
   const newstitle = document.getElementById("newsModalLabel");
   newstitle.innerText = newsDetails.title;
-  const newsDesCription = add3Dots(newsDetails.details, 80);
   const modalBodyId = document.getElementById("modal-body-id");
   modalBodyId.innerHTML = `
     <img src ='${
       newsDetails.thumbnail_url ? newsDetails.thumbnail_url : "No source"
     }'><br/><br/>
-    <span class="text-primary">Description : <p class="text-black">${newsDesCription}<p></span>
+    <span class="text-primary">Description : <p class="text-black">${
+      newsDetails.details ? newsDetails.details : "no details found "
+    }<p></span>
 
     <span class="text-primary">Total Views : <span class="text-black">${
       newsDetails.total_view
